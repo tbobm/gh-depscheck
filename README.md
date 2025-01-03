@@ -1,5 +1,7 @@
 # gh depscheck
 
+[![Release](https://github.com/tbobm/gh-depscheck/actions/workflows/release.yaml/badge.svg)](https://github.com/tbobm/gh-depscheck/actions/workflows/release.yaml)
+
 Find outdated dependencies in Github Actions Workflows.
 
 ## Features
