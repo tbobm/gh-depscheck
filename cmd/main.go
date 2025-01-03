@@ -3,17 +3,17 @@ package main
 import (
 	"fmt"
 
+	"github.com/spf13/pflag"
+	"github.com/spf13/viper"
 	"github.com/tbobm/gh-depscheck/pkg/depscheck"
 )
 
 func main() {
-	tags, err := depscheck.GetLatestTags("actions/checkout")
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-	fmt.Println("Tags:", tags)
-	localWorkflow, err := depscheck.LoadWorkflow("workflow.yml")
+	pflag.String("workflowfile", "workflow.yml", "Target Github Actions Workflow manifest")
+	pflag.Parse()
+	viper.BindPFlags(pflag.CommandLine)
+	workflow := viper.GetString("workflowfile")
+	localWorkflow, err := depscheck.LoadWorkflow(workflow)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
