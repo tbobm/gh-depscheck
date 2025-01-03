@@ -18,7 +18,13 @@ func main() {
 		fmt.Println("Error:", err)
 		return
 	}
-	fmt.Printf("Loaded Workflow: %+v\n", localWorkflow)
 	outdated := depscheck.CompareActionVersions(localWorkflow)
-	fmt.Println("Outdated for archiver Actions:", outdated)
+
+	fmt.Println("Jobs with outdated Actions for Workflow", localWorkflow.Name, ":", len(outdated))
+
+	if len(outdated) > 0 {
+		for job, action := range outdated {
+			fmt.Println("~> Job", job, "actions:", action)
+		}
+	}
 }
