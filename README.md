@@ -21,3 +21,12 @@ $ docker build -t depscheck:local .
 ```bash
 $ go build -o ./depscheck ./cmd/
 ```
+
+## Usage
+
+```console
+$ depscheck --workflow-file example-workflow.yml
+Jobs with outdated Actions for Workflow CICD : 2
+~> Job build-docker-image actions: [actions/checkout@v1 actions/checkout@v0]
+~> Job other-build actions: [actions/checkout@v1 actions/checkout@v0]
+```
