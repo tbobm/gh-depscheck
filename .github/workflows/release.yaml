@@ -30,6 +30,5 @@ jobs:
           version: "~> 2"
           distribution: goreleaser
           args: release --clean
-          workdir: ./cmd
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
